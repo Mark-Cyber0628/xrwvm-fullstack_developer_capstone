@@ -43,11 +43,32 @@ def logout_user(request):
     return JsonResponse(data)
 
 
+#Felhasználó regisztráció
+@csrf_exempt
+def registration(request):
+    data = json.loads(request.body)
+    username = data['userName']
+    password = data['password']
+    first_name = data.get('firstName', '')
+    last_name = data.get('lastName', '')
+    email = data.get('email', '')
 
-# Create a `registration` view to handle sign up request
-# @csrf_exempt
-# def registration(request):
-# ...
+    # Check if user already exists
+    if User.objects.filter(username=username).exists():
+        return JsonResponse({"error": "Already Registered"})
+
+    # Create user and log them in
+    user = User.objects.create_user(
+        username=username,
+        password=password,
+        first_name=first_name,
+        last_name=last_name,
+        email=email
+    )
+    login(request, user)
+
+    return JsonResponse({"userName": username, "status": "Authenticated"})
+
 
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
