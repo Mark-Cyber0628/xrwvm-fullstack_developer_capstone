@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Linter
         run: |
-          find ./server -name "*.py" -exec flake8 {} +
+          flake8 ./server
           echo "Linted all the python files successfully"
 
   lint_js:
@@ -46,5 +46,5 @@ jobs:
 
       - name: Run Linter
         run: |
-          find ./server/database -name "*.js" -exec jshint {} +
+          jshint ./server/database
           echo "Linted all the js files successfully"
