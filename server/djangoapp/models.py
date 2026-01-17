@@ -1,15 +1,20 @@
 from django.db import models
-#from django.utils.timezone import now
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
 class CarMake(models.Model):
+    """Model representing a car make or brand."""
+
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
+
 class CarModel(models.Model):
+    """Model representing a specific car model linked to a make."""
+
     SEDAN = "SEDAN"
     SUV = "SUV"
     WAGON = "WAGON"
@@ -28,5 +33,5 @@ class CarModel(models.Model):
         validators=[MinValueValidator(2015), MaxValueValidator(2023)]
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.car_make.name} {self.name}"

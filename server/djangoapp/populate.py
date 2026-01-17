@@ -1,6 +1,17 @@
+"""Utility to populate the database with initial car make and model data."""
+
 from .models import CarMake, CarModel
 
-def initiate():
+
+def initiate() -> None:
+    """
+    Create initial car makes and models in the database.
+
+    This helper seeds the database with a handful of common car makes and
+    associated models. It can safely be called multiple times; it does not
+    check for existing entries but simply populates the tables.
+    """
+
     car_make_data = [
         {"name": "NISSAN", "description": "Great cars. Japanese technology"},
         {"name": "Mercedes", "description": "Great cars. German technology"},
@@ -12,29 +23,104 @@ def initiate():
     car_make_instances = []
     for data in car_make_data:
         car_make_instances.append(
-            CarMake.objects.create(name=data["name"], description=data["description"])
+            CarMake.objects.create(
+                name=data["name"],
+                description=data["description"],
+            )
         )
 
+    # Use multi‑line dictionaries to keep line lengths reasonable
     car_model_data = [
-        {"name": "Pathfinder", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},
-        {"name": "Qashqai", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},
-        {"name": "XTRAIL", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},
-
-        {"name": "A-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]},
-        {"name": "C-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]},
-        {"name": "E-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]},
-
-        {"name": "A4", "type": "SUV", "year": 2023, "car_make": car_make_instances[2]},
-        {"name": "A5", "type": "SUV", "year": 2023, "car_make": car_make_instances[2]},
-        {"name": "A6", "type": "SUV", "year": 2023, "car_make": car_make_instances[2]},
-
-        {"name": "Sorrento", "type": "SUV", "year": 2023, "car_make": car_make_instances[3]},
-        {"name": "Carnival", "type": "SUV", "year": 2023, "car_make": car_make_instances[3]},
-        {"name": "Cerato", "type": "Sedan", "year": 2023, "car_make": car_make_instances[3]},
-
-        {"name": "Corolla", "type": "Sedan", "year": 2023, "car_make": car_make_instances[4]},
-        {"name": "Camry", "type": "Sedan", "year": 2023, "car_make": car_make_instances[4]},
-        {"name": "Kluger", "type": "SUV", "year": 2023, "car_make": car_make_instances[4]},
+        {
+            "name": "Pathfinder",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[0],
+        },
+        {
+            "name": "Qashqai",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[0],
+        },
+        {
+            "name": "XTRAIL",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[0],
+        },
+        {
+            "name": "A-Class",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[1],
+        },
+        {
+            "name": "C-Class",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[1],
+        },
+        {
+            "name": "E-Class",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[1],
+        },
+        {
+            "name": "A4",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[2],
+        },
+        {
+            "name": "A5",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[2],
+        },
+        {
+            "name": "A6",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[2],
+        },
+        {
+            "name": "Sorrento",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[3],
+        },
+        {
+            "name": "Carnival",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[3],
+        },
+        {
+            "name": "Cerato",
+            "type": "Sedan",
+            "year": 2023,
+            "car_make": car_make_instances[3],
+        },
+        {
+            "name": "Corolla",
+            "type": "Sedan",
+            "year": 2023,
+            "car_make": car_make_instances[4],
+        },
+        {
+            "name": "Camry",
+            "type": "Sedan",
+            "year": 2023,
+            "car_make": car_make_instances[4],
+        },
+        {
+            "name": "Kluger",
+            "type": "SUV",
+            "year": 2023,
+            "car_make": car_make_instances[4],
+        },
     ]
 
     for data in car_model_data:
@@ -43,5 +129,5 @@ def initiate():
             car_make=data["car_make"],
             type=data["type"],
             year=data["year"],
-            dealer_id=1
+            dealer_id=1,
         )
