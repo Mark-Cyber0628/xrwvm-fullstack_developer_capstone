@@ -1,4 +1,0 @@
-[flake8]
-max-line-length = 120
-exclude = .git,__pycache__,*/migrations/*,venv,env,.venv,build,dist
-ignore = E302,E305,E231,E225,E265,E131,E122,E275,W293,W292,E501
