@@ -1,5 +1,3 @@
-"""Helper functions to communicate with backend APIs for dealerships and reviews."""
-
 import os
 import requests
 from dotenv import load_dotenv
